@@ -1,0 +1,34 @@
+cveksler, avivg
+Carl Veksler 324637420, Aviv Gabay 203208269
+Exercise 2
+
+Part 2: Theoretical Questions
+
+1. A program that can put user-level threads into good use is a web browser. For example,
+while waiting for some server to respond on thread, we would like to run another thread.
+This is possible only when implementing the browser by user-level threads, as we define its
+control flow and synchronization, and do not depend on the OS.
+
+2. Advantages:
+a) No code sharing between tabs. Improves safety, i.e. one tab cannot manipulate another.
+b) Tabs are independent. If one thread of a tab is blocked by the kernel, then only this tab is blocked.
+Disadvantages:
+a) The browser runs slower. Each tab change requires a costly context switch between processes.
+
+3. The kill pid command sends a signal to the process specified by pid. If no argument is written after pid,
+the default signal sent is the SIGKILL signal, which terminates the process.
+The SIGKILL signal can not be caught, blocked or ignored.
+uring the command SIGRTMIN and SIGRT_1 are masked in order to avoid problems with its termination.
+
+4.
+Virtual time - Abstract notion of time, that does not necessarily have correlation with 'real' time,
+i.e. the real amount of time units that have passed since two points of measurement.
+Example: Synchronization of processes or threads.
+Real time - Notion of time that has a relation with the 'real' time that has passed between any two points of
+measurement.
+Example: A program that increments the amount of days passed everyday at midnight:)
+The time we wait for a server to respond is real time.
+
+
+
+

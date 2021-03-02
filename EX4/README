@@ -1,0 +1,50 @@
+cveksler, avivg
+Carl Veksler 324637420, Aviv Gabay 203208269
+EX:4
+
+FILES:
+
+whatsappClient.h
+whatsappClient.cpp
+whatsappServer.h
+whatsappServer.cpp
+whatsappio.h
+whatsappio.cpp
+Makefile
+README
+
+
+Theoretical Questions:
+
+1.
+a:
+In order to support the new command on the client should only add "leave_group" command to
+its enum of supported inputs. Other than that the client sends the request to the server
+as it is, so no more further changes are needed.
+
+b: 
+In order to support the new command on the server side, a handler for "leave_group" neeeds
+to be defined, same as it has for other possible actions of the client.
+
+2.
+We prefer TCP over UDP in this exercise since TCP is all about this reliability — it gurantees
+that no data is lost or corrupted in transit.
+In our messaging app we need to guarantee two essential things: data to be sent
+in the same order of requests and safe transit to ensure whole data is completely delivered.
+
+3.
+When using UDP There is no guarantee we get all the data which were sent, and there is no way
+to ask for a data again if we miss it, but losing all this overhead means the computers
+can communicate more quickly.
+UDP is used when speed is desirable and error correction is not necessary.
+Two examples which require quick communication over errors correction are live broadcasts and online games.
+
+4.
+One design could be writing all client's and server's stdin and stdout to a file (server will write also its clients, groups, etc) 
+on a hard drive every some time, or several commands.
+In order to restore the data, connection to the server will require username and password to avoid hostile usage.
+When server is up and running again it will read from the file the clients that were connected and try to re-establish connection automatically
+and restruct their groups. When a client is connected again it could restore its last data from the saved file.
+
+
+
